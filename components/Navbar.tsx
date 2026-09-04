@@ -11,6 +11,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === '/';
+  const dashboardUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL || 'http://localhost:3001';
 
   const scrollTo = (id: string) => {
     setMobileOpen(false);
@@ -73,7 +74,7 @@ export default function Navbar() {
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="https://app.finkfold.com"
+              href={dashboardUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-text-secondary hover:text-white px-4 py-2 rounded-full text-sm font-medium border border-border hover:border-accent/40 transition-all duration-200"
@@ -126,7 +127,7 @@ export default function Navbar() {
               Academy
             </Link>
             <a
-              href="https://app.finkfold.com"
+              href={dashboardUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
