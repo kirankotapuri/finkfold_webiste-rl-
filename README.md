@@ -51,6 +51,25 @@ database, enables public reads for published courses, and adds the initial
 Systeme.io course link. Add future courses to this table with `published` set to
 `true`.
 
+### Academy payments
+
+Run `supabase/migrations/003_create_academy_enrollments.sql` after the course
+migration. The website then collects the learner's name, email, and WhatsApp
+number, creates a Razorpay order, verifies the payment signature on the server,
+and only then opens the Systeme.io access link.
+
+Add these values in Vercel under **Settings → Environment Variables**:
+
+| Variable | Value |
+|---|---|
+| `RAZORPAY_KEY_ID` | Razorpay Key ID (`rzp_test_...` for testing) |
+| `RAZORPAY_KEY_SECRET` | Razorpay secret, server-only |
+| `ACADEMY_COURSE_PRICE_INR` | Course price in rupees, e.g. `999` |
+
+The public Razorpay Key ID is also needed by the checkout, but the secret must
+never be exposed to browser code or committed to GitHub. Change the displayed
+course price in the `academy_courses.price` column when you change the amount.
+
 ### 6. Run the development server
 
 ```bash

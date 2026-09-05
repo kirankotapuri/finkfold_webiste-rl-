@@ -17,6 +17,7 @@ import {
 import { useState } from 'react';
 import type { CourseData, CourseSection } from '@/lib/courses';
 import Navbar from '@/components/Navbar';
+import CourseEnrollment from '@/components/CourseEnrollment';
 
 function SectionAccordion({
   section,
@@ -132,15 +133,7 @@ export default function CourseDetailContent({ course }: { course: CourseData }) 
                   Coming Soon
                 </div>
               ) : (
-                <a
-                  href={course.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-accent text-white px-8 py-3.5 rounded-full font-medium hover:bg-accent/90 hover:scale-105 active:scale-95 transition-all duration-200 text-base"
-                >
-                  Enroll in Course — {course.price}
-                  <ArrowRight size={18} />
-                </a>
+                <CourseEnrollment course={course} />
               )}
             </motion.div>
 
@@ -294,15 +287,7 @@ export default function CourseDetailContent({ course }: { course: CourseData }) 
               Coming Soon — We&apos;ll notify you when it&apos;s ready
             </span>
           ) : (
-            <a
-              href={course.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-accent text-white px-8 py-3.5 rounded-full font-medium hover:bg-accent/90 hover:scale-105 active:scale-95 transition-all duration-200 text-base"
-            >
-              Enroll Now — {course.price}
-              <ArrowRight size={18} />
-            </a>
+            <CourseEnrollment course={course} />
           )}
         </motion.div>
       </section>

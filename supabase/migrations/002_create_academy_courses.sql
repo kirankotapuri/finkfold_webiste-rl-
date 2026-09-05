@@ -10,7 +10,7 @@ create table if not exists academy_courses (
   students text not null default 'Online course',
   rating text not null default '5.0',
   lessons integer not null default 0,
-  price text not null default 'Enroll now',
+  price text not null default 'INR 999',
   tag text not null default 'Available Now',
   link text not null,
   published boolean not null default true,
@@ -54,5 +54,6 @@ on conflict (slug) do update set
   link = excluded.link,
   about = excluded.about,
   who_is_this_for = excluded.who_is_this_for,
+  price = excluded.price,
   published = true,
   sort_order = excluded.sort_order;
