@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     const order = await razorpayResponse.json();
     if (!razorpayResponse.ok) return NextResponse.json({ message: 'Unable to create payment order.' }, { status: 502 });
 
-    await supabase.from('academy_enrollments').insert({
+    const { error: enrollmentError } = await supabase.from('academy_enrollments').insert({
       course_slug: slug,
       customer_name: customer.name,
       customer_email: customer.email,
@@ -46,6 +46,10 @@ export async function POST(request: NextRequest) {
       razorpay_order_id: order.id,
       status: 'pending',
     });
+    if (enrollmentError) {
+      console.error('Academy enrollment insert error:', enrollmentError);
+      return NextResponse.json({ message: 'Unable to save enrollment details.' }, { status: 500 });
+    }
 
     return NextResponse.json({ key: razorpayKeyId, orderId: order.id, amount: order.amount, currency: order.currency });
   } catch {

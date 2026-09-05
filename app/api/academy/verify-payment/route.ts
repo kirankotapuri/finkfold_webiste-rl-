@@ -14,8 +14,16 @@ export async function POST(request: NextRequest) {
     if (expectedSignature !== razorpay_signature) return NextResponse.json({ message: 'Payment verification failed.' }, { status: 400 });
 
     const supabase = getServiceClient();
-    const { data: enrollment } = await supabase.from('academy_enrollments').update({ razorpay_payment_id, status: 'paid', paid_at: new Date().toISOString() }).eq('razorpay_order_id', razorpay_order_id).select('id').single();
-    if (!enrollment) return NextResponse.json({ message: 'Enrollment record not found.' }, { status: 404 });
+    const { data: enrollment, error: enrollmentError } = await supabase
+      .from('academy_enrollments')
+      .update({ razorpay_payment_id, status: 'paid', paid_at: new Date().toISOString() })
+      .eq('razorpay_order_id', razorpay_order_id)
+      .select('id')
+      .single();
+    if (enrollmentError || !enrollment) {
+      console.error('Academy enrollment update error:', enrollmentError);
+      return NextResponse.json({ message: 'Enrollment record not found.' }, { status: 404 });
+    }
 
     const { data: course } = await supabase.from('academy_courses').select('link').eq('slug', slug).eq('published', true).single();
     if (!course?.link) return NextResponse.json({ message: 'Course access link is unavailable.' }, { status: 500 });
