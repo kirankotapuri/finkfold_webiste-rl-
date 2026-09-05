@@ -51,4 +51,4 @@ export async function getCourseBySlug(slug: string): Promise<CourseData | null> 
 
   if (error || !data) return null;
   return data as CourseData;
-}
+}

@@ -34,16 +34,22 @@ Fill in your credentials in `.env.local`:
 
 ### 4. Set up Supabase
 
-1. Go to [supabase.com](https://supabase.com) and create a new project
+1. Open the Supabase project already used by the deployed website
 2. Go to **Settings → API**
 3. Copy the **URL** and **anon key** into `.env.local`
 4. Copy the **service_role key** into `.env.local` (keep this secret!)
 
-### 5. Run the database migration
+### 5. Run the database migrations
 
 1. Open the **Supabase SQL Editor** in your project dashboard
-2. Paste the contents of `supabase/migrations/001_create_leads_table.sql`
-3. Click **Run**
+2. Run `supabase/migrations/001_create_leads_table.sql`.
+3. Run `supabase/migrations/002_create_academy_courses.sql`.
+4. Click **Run** after each migration.
+
+The second migration adds the `academy_courses` table to the existing website
+database, enables public reads for published courses, and adds the initial
+Systeme.io course link. Add future courses to this table with `published` set to
+`true`.
 
 ### 6. Run the development server
 
