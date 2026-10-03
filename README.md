@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+---
 
-## Getting Started
+### 3. README for `finkfold-website`
 
-First, run the development server:
+Copy and paste this into `README.md` inside your **Finkfold Main Website & Academy** repository:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+```markdown
+# Finkfold: Main Web Application & Academy Platform
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[![Live Website](https://img.shields.io/badge/Vercel-Live_Website-black?style=for-the-badge&logo=vercel)](https://finkfold-website.vercel.app/academy)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The public-facing portal for Finkfold, featuring the product homepage, educational resources, and the Finkfold Academy platform.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🔗 Live Application Link
 
-To learn more about Next.js, take a look at the following resources:
+- **Finkfold Academy:** [https://finkfold-website.vercel.app/academy](https://finkfold-website.vercel.app/academy)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ✨ Features
 
-## Deploy on Vercel
+- **Academy Hub:** Educational modules and interactive guides for automation and AI integration.
+- **Lead Generation Interface:** Interactive landing pages integrated with automated intake flows.
+- **Responsive UI:** Fully mobile-optimized presentation components and media pages.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠️ Tech Stack
+
+- **Frontend:** Next.js, React, Tailwind CSS
+- **Backend Services:** Supabase, Automated Workflow Endpoints
+- **Deployment:** Vercel
+
+---
+
+## ⚙️ Getting Started Locally
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/kirankotapuri/finkfold-website.git](https://github.com/kirankotapuri/finkfold-website.git)
+   cd finkfold-website
